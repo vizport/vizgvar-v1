@@ -1,0 +1,81 @@
+.variationChart{
+  padding: 20px 5px;
+}
+
+
+
+.link {
+	fill: none;
+  fill-opacity:0.4;
+  -webkit-transition: fill-opacity 0.2s;
+  -o-transition: fill-opacity 0.2s;
+  transition: fill-opacity 0.2s;
+}
+
+/*Click functions*/
+.link.active{
+  fill-opacity:0.8 !important
+}
+.link.desactive{
+  fill-opacity: 0.1;
+}
+
+/*hover functions*/
+.link.hoverActive{
+  fill-opacity:0.8 !important
+}
+.link.hoverDesactive{
+  fill-opacity: 0.1;
+}
+
+.block{
+  stroke:white;
+  stroke-width:2.5
+}
+
+.blocksPart:hover > .block {
+  opacity: 0.5;
+}
+
+.blocksPart:hover > .block:hover {
+  opacity: 1.0;
+
+}
+
+#variation > label{
+  display: none;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#variation > label.active{
+  display: block;
+}
+#tooltip-variation {
+        position: absolute;
+        width: 200px;
+        height: auto;
+        opacity:0.75;
+        padding: 10px;
+        background-color: #222222;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+        color: #f2f2f2;
+}
+
+#tooltip-variation.hidden {
+        display: none;
+}
+
+#tooltip-variation p {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+}

@@ -1,0 +1,19 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button id="modal-exit" type="button" class="close modal-variation-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title">Anotations</h3>
+
+      </div>
+      <div class="modal-body">
+
+      </div>
+
+      <div class="modal-footer">
+      	<button id="print-anotations" data-id="<%= @id %>" type="button" class="btn btn-save btn-success pull-left">Print</button>
+
+
+      	<button type="button" class="btn btn-danger modal-variation-close" data-dismiss="modal">Close</button>
+      </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

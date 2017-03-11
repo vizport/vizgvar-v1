@@ -1,0 +1,76 @@
+<header>
+    <div class ="logoSection">
+      <img class="logo" src="{3vot}/assets/logo.png" alt="">
+      <!-- <h1 class=""> Sketchv3 </h1> -->
+    </div>
+
+    <div class="selectSection">
+      <label>Proteins: </label>
+      <select id="selectProtein" class="select-box">
+        <option> Please select a protein </option>
+      </select>
+    </div>
+
+</header>
+
+<section>
+  <div id="range">
+    <label>Range:</label>
+    <input type="text" id="rangeInput" readonly style="border:0">
+    <!-- <span class="tooltip tooltipfirst"></span>
+    <span class="tooltip tooltiplast"></span> -->
+    <div id="slider-range"></div>
+    <div id="static-range"></div>
+  </div>
+
+  <div id="domain">
+    <label>Domains</label>
+
+    <div id ="domainsLabels">
+    </div>
+
+    <div id="chart-domain"></div>
+    <div id="tooltip-domain" class="tooltip hidden">
+          <div><span>ID: </span> <span id="domainid"></span></div>
+        <div><span>Source: </span><span id="source"></span></div>
+        <div><span>Position: </span><span id="positionDomain"></span></div>
+        <hr>
+        <div><span id="description"></span></div>
+
+      </div>
+  </div>
+
+  <div id="exon">
+    <label>Exons</label>
+    <div id="chart-exon"></div>
+    <div id="tooltip-exon" class="tooltip hidden">
+          <div><span>ID</span> <span id="exonid"></span></div>
+          <div><span>Position </span><span id="positionExon"></span></div>
+        <hr>
+        <div><span>Start Phase</span> <span id="startphase"></span></div>
+        <div><span>End Phase</span> <span id="endphase"></span></div>
+
+      </div>
+  </div>
+
+  <div id="variation">
+    <label>Variations</label>
+    <div id="chart"></div>
+    <div id="tooltip-variation" class="tooltip hidden">
+          <div><span>ID</span> <span id="variationname"></span></div>
+        <div><span id="type"></span></div>
+        <div><span>Position </span><span id="position"></span></div>
+        <hr>
+        <div><span>codon</span> <span id="codon"></span></div>
+        <div><span>residue</span> <span id="residues"></span></div>
+        <div><span>Alleles</span> <span id="allelles"></span></div>
+      </div>
+  </div>
+
+</section>
+
+
+<footer>
+
+
+</footer>

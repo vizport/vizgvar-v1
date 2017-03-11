@@ -1,0 +1,218 @@
+<html lang="en">
+	<head>
+		<!-- Meta, title, CSS, favicons, etc. -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- <link rel="stylesheet" media="screen" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"> -->
+		<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"> -->
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.11/crossfilter.min.js"></script> -->
+
+		<script src="https://s3.amazonaws.com/vizport.io/libs/blob.js"></script>
+		<script src="https://s3.amazonaws.com/vizport.io/libs/FileSaver.min.js"></script>
+
+		<link rel="stylesheet" href="main.css">
+		<link rel="shortcut icon" href="./assets/favicon.png" />
+		<title> Vizport One </title>
+	</head>
+
+	<body>
+
+	    <nav class="navbar-default navbar-fixed-top navbar">
+
+		    <div class="container-fluid">
+			    <!-- <div class="col-md-2">
+	            <img src="https://s3.amazonaws.com/vizport.io/vizone_dev/assets/onelogo.png" alt="">
+					</div> -->
+			        <div class="navbar-header">
+			            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			                <span class="sr-only">Toggle navigation</span>
+			                <span class="icon-bar"></span>
+			                <span class="icon-bar"></span>
+			                <span class="icon-bar"></span>			               
+			            </button>
+			            <a class="navbar-brand" href="#"><img alt="Brand" src="https://s3.amazonaws.com/vizport.io/vizone_dev/assets/onelogo_v2.png" alt=""></a>
+				        
+			        </div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="myNavbar">
+
+
+
+						<ul class="nav navbar-nav navbar-right">
+							<li><a target="black" href="doc">Documentation</a></li>
+							<li><a target="black" href="http://vizport.io/">About</a></li>                     
+						</ul>
+
+						<ul class="nav navbar-nav navbar-left">
+							<li class="dropdown">
+								<!-- <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select a protein
+					                <span class="caret"></span>
+					            </a> -->
+					            <li><a id="thisProtein" href=""></a></li>
+					            <li><a id="thisProteinDesc" href=""></a></li>
+							</li>
+						</ul>
+
+						
+					</div><!-- /.navbar-collapse -->
+			</div>
+		</nav>
+
+		<section class="protein_selection">
+			<div class="header">
+				<div class="text container">
+					<h2> <i> Please select a protein </i></h2>
+				</div>
+			</div>
+
+			<div class="proteins_container container">
+				<ul class="protein_list" id="protein_list">
+					
+				</ul>
+			</div>
+
+			
+		</section>
+
+		<section class="charts-container">
+		  <div id="range">
+		    <label>Range:</label>
+		    <input type="text" id="rangeInput" readonly style="border:0">
+		    <!-- <span class="tooltip tooltipfirst"></span>
+		    <span class="tooltip tooltiplast"></span> -->
+		    <div id="slider-range"></div>
+		    <div id="static-range"></div>
+		  </div>
+
+		  <div id="domain">
+		    <label>Domains</label>
+
+		    <div id ="domainsLabels">
+		    </div>
+
+		    <div id="chart-domain"></div>
+		    <div id="tooltip-domain" class="tooltip hidden">
+		        <div><span>ID: </span> <span id="domainid"></span></div>
+		        <div><span>Source: </span><span id="source"></span></div>
+		        <div><span>Position: </span><span id="positionDomain"></span></div>
+		        <hr>
+		        <div><span id="description"></span></div>
+
+		      </div>
+		  </div>
+
+		  <div id="exon">
+		    <label>Exons</label>
+		    <div id="chart-exon"></div>
+		    <div id="tooltip-exon" class="tooltip hidden">
+		        <div><span>ID</span> <span id="exonid"></span></div>
+		        <div><span>Position </span><span id="positionExon"></span></div>
+		        <hr>
+		        <div><span>Start Phase</span> <span id="startphase"></span></div>
+		        <div><span>End Phase</span> <span id="endphase"></span></div>
+
+		      </div>
+		  </div>
+
+		  <div id="variation">
+		    <label>Variations</label>
+		    <div id="chart"></div>
+		    <div id="tooltip-variation" class="tooltip hidden">
+		        <div><span>ID</span> <span id="variationname"></span></div>
+		        <div><span id="type"></span></div>
+		        <div><span>Position </span><span id="position"></span></div>
+		        <hr>
+		        <div><span>codon</span> <span id="codon"></span></div>
+		        <div><span>residue</span> <span id="residues"></span></div>
+		        <div><span>Alleles</span> <span id="allelles"></span></div>
+		      </div>
+		  </div>
+
+
+		</section>
+
+		<div id="annotations">
+			<div class="header">
+				<h4>Annotations</h4>
+				<button id="btn-download-annotation" type="button" class="btn btn-download pull-right"> <span class="glyphicon glyphicon-save"></span> Download</button>
+			</div>
+			<div class="content">
+				<div class="nav-container">
+					<ul class="nav nav-tabs">
+					  <li class="active"><a data-toggle="tab" href="#all">All</a></li>
+					  <li><a data-toggle="tab" href="#domains-tab">Domains</a></li>
+					  <li><a data-toggle="tab" href="#exons-tab">Exons</a></li>
+					  <li><a data-toggle="tab" href="#variations-tab">Variations</a></li>
+					</ul>
+				</div>
+
+				<div class="tab-content">
+				    <div class="tab-pane fade in active" id="all">
+				    	<div class="container-fluid">
+				    		<div class="row" id="all-tab">
+				    			<div class="col-md-12">
+				    				<h3>There are currently no saved annotations</h3>
+				    			</div>	
+				    		</div>
+				    	</div>
+				    </div>
+
+				    <div class="tab-pane fade" id="domains-tab">
+				    	<div class="container-fluid">
+				    		<div class="row" id="domains-tab-content">
+				    			<div class="col-md-12">
+				    				<h3>There are currently no saved annotations</h3>
+				    			</div>	
+				    		</div>
+				    	</div>
+				    </div>
+
+				    <div class="tab-pane fade" id="exons-tab">
+				    	<div class="container-fluid">
+				    		<div class="row" id="exons-tab-content">
+				    			<div class="col-md-12">
+				    				<h3>There are currently no saved annotations</h3>
+				    			</div>	
+				    		</div>
+				    	</div>
+				    </div>
+
+				    <div class="tab-pane fade" id="variations-tab">
+				    	<div class="container-fluid">
+				    		<div class="row" id="variations-tab-content">
+				    			<div class="col-md-12">
+				    				<h3>There are currently no saved annotations</h3>
+				    			</div>	
+				    		</div>
+				    	</div>
+				    </div>
+				  </div>
+				
+			</div>
+
+		 </div>
+
+		<div id="modalvariation" class="modal fade"></div>
+
+		<div id="modaldomain" class="modal fade"></div>
+
+		<div id="modalexon" class="modal fade"></div>
+
+
+		<footer>
+		</footer>
+
+
+		<script src="index.js"></script>
+
+	</body>
+
+</html>

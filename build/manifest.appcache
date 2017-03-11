@@ -1,0 +1,20 @@
+CACHE MANIFEST
+
+
+CACHE:
+bg_home_one.png
+index.html
+index.js
+main.css
+
+
+NETWORK:
+http://*
+https://*
+*
+
+
+SETTINGS:
+prefer-online
+
+# hash: c07ef7417c51ee71035ecf417f50dcb52a4f9fb59d138ae641c40eb9f2dca7cb
