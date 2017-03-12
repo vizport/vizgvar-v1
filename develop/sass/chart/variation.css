@@ -2,7 +2,11 @@
   padding: 20px 5px;
 }
 
-
+@-moz-document url-prefix(){
+  .variationChart{
+    box-sizing: content-box;
+  }
+}
 
 .link {
 	fill: none;

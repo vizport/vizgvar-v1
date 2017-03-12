@@ -613,17 +613,17 @@ function addChartTypes(typeArray,typeLength){
 
   var TextPart = typesPart.append("g").attr("class","TextPart")
   typeArray.forEach(function(d,i){
-    typesPart.append("text")
-          .attr("width",function (d){ return i * ( width  / typeLength ) + (( width  / typeLength )/2)  })
-          .attr("height", 15)
+    TextPart.append("text")
+          .attr("width",function (d){ return i * ( width  / typeLength ) + (( width  / typeLength )/2) + 'px'  })
+          .attr("height", '15px')
           .attr("y", height + 30)
           .attr("x",function (d) { return variableTypeArray[i]})
           .text(function () {return d.charAt(0).toUpperCase() + d.slice(1).replace(/_/g, ' ');})
           .style("font-size",function () {
             if (d.length > 17) {
-              return 10
+              return '10px'
             }else{
-             return 12
+             return '12px'
             }
           })
   })
