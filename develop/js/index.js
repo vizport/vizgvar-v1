@@ -9,7 +9,7 @@ var Domain = require("./models/socketModels/domain");
 
 // // ----------- Controlers ----------- //
 var Protein = require("./controllers/protein");
-Protein("protein_list");
+Protein();
 
 var Chart = require("./controllers/chart");
 Chart("chart");

@@ -1,9 +1,8 @@
-var Parse = require('parse').Parse;
-Parse.initialize("R4A706xOWFzBif4lF3Mkxz7aI21be3g7iKTZhc7q", "MBz2ANLM6SYFe9b1aFMtlypRgnayu7A9RDBlS6tu");
-
 var loader = "<div class='spinner'><div class='dot1'></div><div class='dot2'></div></div>";
 
 var $ = require('jquery');
+var _ = require('lodash');
+
 
 var proteins = [
 	{
@@ -45,29 +44,16 @@ var proteins = [
 ]
 
 function getProteins(){
-	setTimeout(function(){ Protein.refresh(proteins); }, 500);
-	
-	// console.log(Protein.all());
-	// var ProteinParse = Parse.Object.extend("protein");
-	// var query = new Parse.Query(ProteinParse);
-	// var proteins = [];
-	// query.find({
-	//   success: function(results) {
-	//     var proteins = []
-	//     for (var i = 0; i < results.length; i++) {
-	//     	proteins.push( {
-	// 			protein: results[i].get('name'),
-	// 			protein_id: results[i].get('protein_id'),
-	// 			transcript_id: results[i].get('transcript_id'),
-	// 			description: results[i].get('description'),
-	// 		})
-	//     }
-	//     Protein.refresh(proteins);
-	//   },
-	//   error: function(error) {
-	//     alert("Error: " + error.code + " " + error.message);
-	//   }
-	// });
+	$.ajax({
+		type: 'GET',
+		url: '/proteins.json',
+	})
+	.done(function( data ) {
+		console.log('Proteins -> ' + data.length);
+		Protein.refresh(data)
+	});
+
+	// setTimeout(function(){ Protein.refresh(proteins); }, 500);
 }
 
 function getVariation(variation){

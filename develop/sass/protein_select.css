@@ -1,6 +1,33 @@
-.protein_selection {
-	margin-top: 50px;
+
+.protein_selection .logo_container {
+	height: 100%;
+	padding-top: 265px;
+	background-color: #0BADEB;
 }
+
+.protein_selection .logo_container img {
+    margin: 0 auto;
+}
+
+.protein_selection .search {
+	height: 100%;
+	padding-top: 265px;
+	padding-left: 100px;
+	color: #363739;
+}
+
+.protein_selection .search h2{
+	margin: 0;
+	margin-bottom: 65px;
+	width: 750px;
+	color: #363739;
+}
+
+.protein_selection .search h3{
+	margin: 0;
+	margin-bottom: 20px;
+}
+
 
 .protein_selection .header{
 	background: url('https://s3.amazonaws.com/vizport.io/vizone_dev/assets/bg_home_one.png') center;

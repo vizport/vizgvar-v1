@@ -679,11 +679,6 @@ function activeLinkOnClose(){
   })
 }
 
-
-
-
-
-
 // Funcion que crea los links entre elementos
 function drawLinks(links){
   var linksContainer = canvas.append("g").attr("class","linksContainer")
@@ -887,15 +882,6 @@ function saveRecordToAnotation(type,id){
     anotation.save();
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 module.exports = init;

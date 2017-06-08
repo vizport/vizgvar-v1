@@ -228,8 +228,160 @@ footer {
   height: 60px;
 }
 
-.protein_selection {
-  margin-top: 50px;
+.search-container {
+  width: 700px;
+}
+
+.search-box {
+  border-radius: 3px;
+  background-color: #F1F1F1;
+  height: 55px;
+  position: relative;
+}
+
+.search-icon {
+  right: 20px;
+  top: 20%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 32px;
+  height: 40px;
+  color: #999;
+  font-size: 1.3em;
+  padding: 7px 15px;
+  position: absolute;
+}
+
+.search-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 55px;
+  float: right;
+  background-color: transparent;
+  border: 1px solid #BFC4CD;
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 1em;
+  position: relative;
+  outline: 0px;
+}
+
+@keyframes fadeInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-1.334em) translateZ(0);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 999;
+  min-width: 600px;
+  max-height: 300px;
+  overflow: scroll;
+  top: 55px;
+  left: 10px;
+  text-align: left;
+}
+
+.search-results li {
+  box-sizing: border-box;
+  padding: 10px;
+  border-bottom: 1px solid #BFC4CD;
+  /*height: 40px;*/
+  background-color: #e6e6e6;
+  color: #3D3D3D;
+  font-weight: bold;
+}
+
+.search-results li:hover {
+  background-color: #BABABA;
+  cursor: pointer;
+}
+
+.search-results li:nth-child(1) {
+  /* Animation */
+  animation: fadeInTop 0.4s 0s forwards;
+  opacity: 0;
+}
+
+.search-results li:nth-child(2) {
+  /* Animation */
+  animation: fadeInTop 0.4s 0.1s forwards;
+  opacity: 0;
+}
+
+.search-results li:nth-child(3) {
+  /* Animation */
+  animation: fadeInTop 0.4s 0.2s forwards;
+  opacity: 0;
+}
+
+.search-results li:nth-child(4) {
+  /* Animation */
+  animation: fadeInTop 0.4s 0.3s forwards;
+  opacity: 0;
+}
+
+.search-results li:nth-child(5) {
+  /* Animation */
+  animation: fadeInTop 0.4s 0.4s forwards;
+  opacity: 0;
+}
+
+.search-results li:nth-child(6) {
+  /* Animation */
+  animation: fadeInTop 0.4s 0.4s forwards;
+  opacity: 0;
+}
+
+.search-results li:nth-child(7) {
+  /* Animation */
+  animation: fadeInTop 0.4s 0.4s forwards;
+  opacity: 0;
+}
+
+.search-results li:nth-child(8) {
+  /* Animation */
+  animation: fadeInTop 0.4s 0.4s forwards;
+  opacity: 0;
+}
+
+.protein_selection .logo_container {
+  height: 100%;
+  padding-top: 265px;
+  background-color: #0BADEB;
+}
+
+.protein_selection .logo_container img {
+  margin: 0 auto;
+}
+
+.protein_selection .search {
+  height: 100%;
+  padding-top: 265px;
+  padding-left: 100px;
+  color: #363739;
+}
+
+.protein_selection .search h2 {
+  margin: 0;
+  margin-bottom: 65px;
+  width: 750px;
+  color: #363739;
+}
+
+.protein_selection .search h3 {
+  margin: 0;
+  margin-bottom: 20px;
 }
 
 .protein_selection .header {
