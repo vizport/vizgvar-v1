@@ -646,7 +646,7 @@ function clickEventVariation(){
     document.getElementById(this.id).removeClass("desactive");
     document.getElementById(this.id).addClass("active");
     var currentVariation = Variation.find(this.id);
-    currentvariation.externalLink = "";
+    currentVariation.externalLink = "";
     ModalVariationHTML.innerHTML = ModalVariation(currentVariation);
 
     var isInAnotation = Anotation.findAllByAttribute("data_id",_this.id);
