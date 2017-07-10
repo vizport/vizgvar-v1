@@ -625,6 +625,19 @@ footer {
   border-color: #0BADEB;
 }
 
+.btn-download-fasta {
+  color: #fff;
+  background-color: #333333;
+  border-color: #f2f2f2;
+  margin-left: 20px;
+}
+
+.btn-download-fasta:hover {
+  color: #fff;
+  background-color: #333333;
+  border-color: #f2f2f2;
+}
+
 .nav-tabs {
   border-bottom: 0px;
 }

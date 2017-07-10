@@ -1,12 +1,3 @@
-// // ----------- Models ----------- //
-var Protein = require("./models/proteins")
-//Variation Model
-var Variation = require("./models/socketModels/variation");
-// //Exon Model
-var Exon = require("./models/socketModels/exon");
-// // //Domain Model
-var Domain = require("./models/socketModels/domain");
-
 // // ----------- Controlers ----------- //
 var Protein = require("./controllers/protein");
 Protein();
