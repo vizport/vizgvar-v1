@@ -8,7 +8,9 @@ function init(){
 	console.log(' --- Annotation create event ---');
     refresh();
     clickDelete();
-    clickDownload();
+    downloadExons();
+    downloadVariations();
+    downloadDomains();
   });
 
   Annotation.bind("destroy", function() {
@@ -18,6 +20,63 @@ function init(){
     // clickDownload();
   });
 
+}
+
+function exportToCsv(filename, data) {
+	var keys;
+	var rows = [];
+	for (var i = 0; i < Object.keys(data[0]).length; i++) {
+		keys.push(Object.keys(data[0])[i]);
+	}
+	rows.push(keys);
+	for (var i = 0; i < data.length; i++) {
+		var cRow = [];
+		for (var l = 0; l < keys.length; l++) {
+			cRow.push(data[i][keys[l]]);
+		}
+		rows.push(cRow);
+	}
+
+    var processRow = function (row) {
+        var finalVal = '';
+        for (var j = 0; j < row.length; j++) {
+            var innerValue = row[j] === null ? '' : row[j].toString();
+            if (row[j] instanceof Date) {
+                innerValue = row[j].toLocaleString();
+            };
+            var result = innerValue.replace(/"/g, '""');
+            if (result.search(/("|,|\n)/g) >= 0)
+                result = '"' + result + '"';
+            if (j > 0)
+                finalVal += ',';
+            finalVal += result;
+        }
+        return finalVal + '\n';
+    };
+
+    console.log(rows);
+
+    var csvFile = '';
+    for (var i = 0; i < rows.length; i++) {
+        csvFile += processRow(rows[i]);
+    }
+
+    var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
+    if (navigator.msSaveBlob) { // IE 10+
+        navigator.msSaveBlob(blob, filename);
+    } else {
+        var link = document.createElement("a");
+        if (link.download !== undefined) { // feature detection
+            // Browsers that support HTML5 download attribute
+            var url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
 }
 
 function refresh(destroy){
@@ -73,13 +132,9 @@ function clickDelete(){
 	})
 }
 
-function clickDownload(){
-	var btn = document.getElementById('btn-download-annotation')
+function downloadExons(){
+	var btn = document.getElementById('btn-download-exons')
 	btn.onclick = function(e){
-		console.log(' --- Annotation print event ---');
-		// console.log(Annotation.all());
-		var variations = Annotation.grupByType('variation');
-		var domains = Annotation.grupByType('domain');
 		var exons = Annotation.grupByType('exon');
 		var exonsArray = [{
 			id: "id",
@@ -89,17 +144,29 @@ function clickDownload(){
 			start: "start",
 			end: "end",
 		}];
-		var domainArray = [{
-			Parent: "Parent",
-			id: "id",
-			feature_type: "feature_type",
-			seq_region_name: "seq_region_name",
-			type:"type",
-			start: "start",
-			end: "end",
-			interpro:"interpro"
-		}];
+		for (var i = 0; i < exons.length; i++) {
+			var newObj = {
+				id:exons[i].data.id,
+				feature_type:exons[i].data.feature_type,
+				rank:exons[i].data.rank,
+				seq_region_name:exons[i].data.seq_region_name,
+				start:exons[i].data.start,
+				end:exons[i].data.end,
+			};
+			exonsArray.push(newObj)
+		};
+		if (exonsArray.length > 1) {
+			ConvertJSON2CSV(exonsArray, 'exons-annotations')
+		}
 
+	}
+}
+
+function downloadVariations(){
+	var btn = document.getElementById('btn-download-variations')
+	btn.onclick = function(e){
+		// console.log(Annotation.all());
+		var variations = Annotation.grupByType('variation');
 		var variationArray = [{
 			Parent: "Parent",
 			id: "id",
@@ -116,33 +183,6 @@ function clickDownload(){
 			start: "start",
 			end: "end",
 		}];
-
-		for (var i = 0; i < exons.length; i++) {
-			var newObj = {
-				id:exons[i].data.id,
-				feature_type:exons[i].data.feature_type,
-				rank:exons[i].data.rank,
-				seq_region_name:exons[i].data.seq_region_name,
-				start:exons[i].data.start,
-				end:exons[i].data.end,
-			};
-			exonsArray.push(newObj)
-		};
-
-		for (var i = 0; i < domains.length; i++) {
-			var newObj = {
-				Parent: domains[i].data.Parent,
-				id: domains[i].data.id,
-				feature_type: domains[i].data.feature_type,
-				seq_region_name: domains[i].data.seq_region_name,
-				type:domains[i].data.type,
-				start: domains[i].data.start,
-				end: domains[i].data.end,
-				interpro:domains[i].data.interpro
-			};
-			domainArray.push(newObj)
-		};
-
 		for (var i = 0; i < variations.length; i++) {
 			var newObj = {
 				Parent:variations[i].data.Parent,
@@ -162,20 +202,46 @@ function clickDownload(){
 			};
 			variationArray.push(newObj)
 		};
-
-		if (exonsArray.length > 1) {
-			ConvertJSON2CSV(exonsArray)
-		}
-		if (domainArray.length > 1) {
-			ConvertJSON2CSV(domainArray)
-		}
 		if (variationArray.length > 1) {
-			ConvertJSON2CSV(variationArray)
+			ConvertJSON2CSV(variationArray, 'variations-annotations')
 		}
 	}
 }
 
- function ConvertJSON2CSV(objArray){
+function downloadDomains(){
+	var btn = document.getElementById('btn-download-domains')
+	btn.onclick = function(e){
+		var domains = Annotation.grupByType('domain');
+		var domainArray = [{
+			Parent: "Parent",
+			id: "id",
+			feature_type: "feature_type",
+			seq_region_name: "seq_region_name",
+			type:"type",
+			start: "start",
+			end: "end",
+			interpro:"interpro"
+		}];
+		for (var i = 0; i < domains.length; i++) {
+			var newObj = {
+				Parent: domains[i].data.Parent,
+				id: domains[i].data.id,
+				feature_type: domains[i].data.feature_type,
+				seq_region_name: domains[i].data.seq_region_name,
+				type:domains[i].data.type,
+				start: domains[i].data.start,
+				end: domains[i].data.end,
+				interpro:domains[i].data.interpro
+			};
+			domainArray.push(newObj)
+		};
+		if (domainArray.length > 1) {
+			ConvertJSON2CSV(domainArray, 'domains-annotations')
+		}
+	}
+}
+
+ function ConvertJSON2CSV(objArray, filename){
         var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
         var str = '';
         for (var i = 0; i < array.length; i++) {
@@ -187,7 +253,24 @@ function clickDownload(){
             line = line.slice(0, -1);
 	        str += line + '\r\n';
         }
-        window.open( "data:text/csv;charset=utf-8," + escape(str))
+
+        var blob = new Blob([str], { type: 'text/csv;charset=utf-8;' });
+	    if (navigator.msSaveBlob) { // IE 10+
+	        navigator.msSaveBlob(blob, filename);
+	    } else {
+	        var link = document.createElement("a");
+	        if (link.download !== undefined) { // feature detection
+	            // Browsers that support HTML5 download attribute
+	            var url = URL.createObjectURL(blob);
+	            link.setAttribute("href", url);
+	            link.setAttribute("download", filename);
+	            link.style.visibility = 'hidden';
+	            document.body.appendChild(link);
+	            link.click();
+	            document.body.removeChild(link);
+	        }
+	    }
+        // window.open( "data:text/csv;charset=utf-8," + escape(str))
         
     }
 

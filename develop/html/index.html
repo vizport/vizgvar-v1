@@ -149,8 +149,8 @@
 		<div id="annotations">
 			<div class="header">
 				<h4>Annotations</h4>
-				<button id="btn-download-fasta" type="button" class="btn btn-download-fasta pull-right">Download FASTA <span class="glyphicon glyphicon-download-alt"></span></button>
-				<button id="btn-download-annotation" type="button" class="btn btn-download pull-right">Download Annotations <span class="glyphicon glyphicon-save"></span></button>
+				<a id="btn-download-fasta" target="black" type="button" class="btn btn-download-fasta pull-right">Download FASTA <span class="glyphicon glyphicon-download-alt"></span></a>
+				<!-- <button id="btn-download-annotation" type="button" class="btn btn-download pull-right">Download Annotations <span class="glyphicon glyphicon-save"></span></button> -->
 			</div>
 			<div class="content">
 				<div class="nav-container">
@@ -175,6 +175,11 @@
 
 				    <div class="tab-pane fade" id="domains-tab">
 				    	<div class="container-fluid">
+				    		<div class="row">
+				    			<div class="col-md-12">
+				    				<button id="btn-download-domains" type="button" class="btn btn-download pull-right">Download Domains <span class="glyphicon glyphicon-save"></span></button>
+				    			</div>
+				    		</div>
 				    		<div class="row" id="domains-tab-content">
 				    			<div class="col-md-12">
 				    				<h3>There are currently no saved annotations</h3>
@@ -185,6 +190,11 @@
 
 				    <div class="tab-pane fade" id="exons-tab">
 				    	<div class="container-fluid">
+					    	<div class="row">
+				    			<div class="col-md-12">
+				    				<button id="btn-download-exons" type="button" class="btn btn-download pull-right">Download Exons <span class="glyphicon glyphicon-save"></span></button>
+				    			</div>
+				    		</div>
 				    		<div class="row" id="exons-tab-content">
 				    			<div class="col-md-12">
 				    				<h3>There are currently no saved annotations</h3>
@@ -195,6 +205,11 @@
 
 				    <div class="tab-pane fade" id="variations-tab">
 				    	<div class="container-fluid">
+				    		<div class="row">
+				    			<div class="col-md-12">
+				    				<button id="btn-download-variations" type="button" class="btn btn-download pull-right">Download Variations <span class="glyphicon glyphicon-save"></span></button>
+				    			</div>
+				    		</div>
 				    		<div class="row" id="variations-tab-content">
 				    			<div class="col-md-12">
 				    				<h3>There are currently no saved annotations</h3>

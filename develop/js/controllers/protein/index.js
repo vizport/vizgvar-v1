@@ -72,6 +72,10 @@ function selectProtein(){
   $('.charts-container').show();
   $('footer').hide();
 
+  'http://rest.ensembl.org/sequence/id/'
+  
+  document.getElementById("btn-download-fasta").setAttribute('href', 'http://rest.ensembl.org/sequence/id/'+ protein.protein_id);
+
   var thisProtein = document.getElementById("thisProtein");
   thisProtein.innerHTML = protein.protein;
 
