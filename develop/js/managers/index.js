@@ -10,6 +10,9 @@ function getProteins(){
 	})
 	.done(function( data ) {
 		console.log('Proteins -> ' + data.length);
+		$('.search-loader').hide();
+		$('.search-message').text('Search proteins by ID or by name');
+		$(".search-container").fadeIn();
 		Protein.refresh(data)
 	});
 }
