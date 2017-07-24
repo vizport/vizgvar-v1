@@ -892,6 +892,10 @@ footer {
   display: block;
 }
 
+#variation > #chart > svg.variationChart {
+  overflow: initial;
+}
+
 #tooltip-variation {
   position: absolute;
   width: 200px;
