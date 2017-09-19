@@ -19,9 +19,21 @@ a.navbar-brand {
  padding: 10px 10px
 }
 
+a.navbar-brand.back {
+  padding: 10px 10px;
+  background-color: #444;
+  color: #fff !important
+}
+
+nav .navbar-brand.back img{
+  width: 30px;
+  display: inline-block;
+}
+
 nav .navbar-brand img{
   /*margin-top: 5px;*/
   width: 100px;
+  display: inline-block;
 }
 
 .navbar-default .navbar-nav > li > a{

@@ -1244,9 +1244,13 @@ function selectProtein(){
   'http://rest.ensembl.org/sequence/id/'
   
   document.getElementById("btn-download-fasta").setAttribute('href', 'http://rest.ensembl.org/sequence/id/'+ protein.protein_id);
+  
+  var brandLink = document.getElementById("brand");
+  $(brandLink).addClass('back');
+  brandLink.innerHTML = '<img alt="Brand" src="https://s3.amazonaws.com/vizport.io/assets/return_icon.svg" alt=""> Return to Search';
 
   var thisProtein = document.getElementById("thisProtein");
-  thisProtein.innerHTML = protein.protein;
+  thisProtein.innerHTML = protein.protein + ': ';
 
   var thisProteinDesc = document.getElementById("thisProteinDesc");
   thisProteinDesc.innerHTML = protein.family_description;

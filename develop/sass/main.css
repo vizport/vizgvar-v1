@@ -9,6 +9,14 @@ body {
 	font-family: 'Droid Sans', sans-serif;
 }
 
+.protein-head div {
+	display: inline-block;
+}
+
+.protein-head #thisProtein {
+	font-weight: 700 
+}
+
 
 
 @import url(navbar.css);
