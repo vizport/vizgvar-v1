@@ -15,7 +15,7 @@ module.exports = merge(common, {
     compress: true,
     port: process.env.PORT || 8080,
     proxy: {
-      '/api': 'http://localhost:5000',
+      '/api': 'http://localhost:8000',
     },
   },
 });

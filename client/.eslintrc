@@ -4,14 +4,14 @@
   "plugins": [
     "react",
     "import",
-    "jsx-a11y",
+    "jsx-a11y"
   ],
   "env": {
     "browser": true,
     "node": true,
-    "es6": true,
+    "es6": true
   },
   "globals": {
-    "__ENV__": true,
+    "__ENV__": true
   }
 }

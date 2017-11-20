@@ -1,7 +1,8 @@
 {
-  "name": "vizgvar_2",
-  "version": "1.0.0",
+  "name": "vizgvar",
+  "version": "2.0.0",
   "main": "server/index.js",
+  "author": "Carlos Cruz @carcruz",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon server.js",
