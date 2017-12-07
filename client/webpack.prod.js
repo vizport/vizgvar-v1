@@ -5,7 +5,7 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   resolveLoader: {
-    modules: [path.join(__dirname, 'client/node_modules')],
+    modules: [path.join(__dirname, 'node_modules')],
     //moduleExtensions: ['-loader'],
   },
   plugins: [
