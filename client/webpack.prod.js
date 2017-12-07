@@ -7,7 +7,6 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       __ENV__: JSON.stringify('production'),
     }),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
