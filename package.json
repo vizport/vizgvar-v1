@@ -4,6 +4,9 @@
   "main": "server/index.js",
   "author": "Carlos Cruz @carcruz",
   "license": "MIT",
+  "engines": {
+    "node": "6.9.5"
+  },
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
