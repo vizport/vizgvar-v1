@@ -1241,9 +1241,9 @@ function selectProtein(){
   $('.charts-container').show();
   $('footer').hide();
 
-  'http://rest.ensembl.org/sequence/id/'
+  'https://rest.ensembl.org/sequence/id/'
   
-  document.getElementById("btn-download-fasta").setAttribute('href', 'http://rest.ensembl.org/sequence/id/'+ protein.protein_id);
+  document.getElementById("btn-download-fasta").setAttribute('href', 'https://rest.ensembl.org/sequence/id/'+ protein.protein_id);
   
   var brandLink = document.getElementById("brand");
   $(brandLink).addClass('back');
@@ -1340,7 +1340,7 @@ function getVariation(variation){
 	Variation.destroyAll();
 	$.ajax({
 		type: 'GET',
-		url: 'http://rest.ensembl.org/overlap/translation/'+ variation +'?feature=transcript_variation;content-type=application/json;feature=somatic_transcript_variation',
+		url: 'https://rest.ensembl.org/overlap/translation/'+ variation +'?feature=transcript_variation;content-type=application/json;feature=somatic_transcript_variation',
 		beforeSend: function() {
 			document.getElementById('chart').innerHTML = loader;
 		}
@@ -1354,7 +1354,7 @@ function getExon(exon){
 	Exon.destroyAll();
 	$.ajax({
 		type: 'GET',
-		url: 'http://rest.ensembl.org/overlap/translation/'+ exon +'?feature=translation_exon;content-type=application/json',
+		url: 'https://rest.ensembl.org/overlap/translation/'+ exon +'?feature=translation_exon;content-type=application/json',
 		beforeSend: function() {
 			document.getElementById('chart-exon').innerHTML = loader;
 		}
@@ -1370,7 +1370,7 @@ function getDomain(domain){
 	Domain.destroyAll();
   	$.ajax({
 		type: 'GET',
-		url: 'http://rest.ensembl.org/overlap/translation/'+ domain +'?content-type=application/json',
+		url: 'https://rest.ensembl.org/overlap/translation/'+ domain +'?content-type=application/json',
 		beforeSend: function() {
 			document.getElementById('chart-domain').innerHTML = loader;
 		}
